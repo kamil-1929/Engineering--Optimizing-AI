@@ -4,9 +4,12 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 
 import pytest
 from model.base import BaseModel
-from model import utils
 
 class ConcreteModel(BaseModel):
+    def __init__(self):
+        self.defaults = {}
+        super().__init__()
+
     def train(self):
         pass
 
