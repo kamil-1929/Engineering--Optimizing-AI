@@ -1,6 +1,6 @@
 import pandas as pd 
 import re
-from Config import *
+from config.Config import *
 
 
 def get_input_data()->pd.DataFrame:
