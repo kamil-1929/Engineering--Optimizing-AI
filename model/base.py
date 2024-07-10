@@ -1,18 +1,16 @@
 from abc import ABC, abstractmethod
-from . import utils
 import pandas as pd
 import numpy as np
-
+from utils import string2any  # Importing the specific function needed
 
 class BaseModel(ABC):
     def __init__(self) -> None:
         ...
 
-
     @abstractmethod
     def train(self) -> None:
         """
-        Train the model using ML Models for Multi-class and mult-label classification.
+        Train the model using ML Models for Multi-class and multi-label classification.
         :params: df is essential, others are model specific
         :return: classifier
         """
@@ -21,7 +19,6 @@ class BaseModel(ABC):
     @abstractmethod
     def predict(self) -> int:
         """
-
         """
         ...
 
@@ -29,9 +26,8 @@ class BaseModel(ABC):
     def data_transform(self) -> None:
         return
 
-    # def build(self, values) -> BaseModel:
     def build(self, values={}):
-        values = values if isinstance(values, dict) else utils.string2any(values)
+        values = values if isinstance(values, dict) else string2any(values)
         self.__dict__.update(self.defaults)
         self.__dict__.update(values)
         return self
