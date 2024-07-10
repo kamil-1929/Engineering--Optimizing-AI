@@ -1,8 +1,8 @@
-from preprocess import *
-from embeddings import *
+from features.preprocess import *
+from features.embeddings import *
 from modelling.modelling import *
 from modelling.data_model import *
-from gradient_boosting import GradientBoosting
+from features.gradient_boosting import GradientBoosting
 import random
 from sklearn.metrics import classification_report, accuracy_score
 
