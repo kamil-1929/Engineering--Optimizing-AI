@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 import pandas as pd
 import numpy as np
-from utils import string2any  # Importing the specific function needed
+from .utils import string2any
 
 class BaseModel(ABC):
     def __init__(self) -> None:
