@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from Config import *
+from config.Config import *
 import random
 
 seed = 0
