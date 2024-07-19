@@ -1,5 +1,6 @@
 from model.randomforest import RandomForest
 
+
 def model_predict(data, df, name):
     results = []
     print("RandomForest")
