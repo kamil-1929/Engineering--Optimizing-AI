@@ -19,19 +19,15 @@ This project focuses on the engineering and evaluation of an AI model that class
     pip install -r requirements.txt
     ```
 ## Usage
-
 1. **Run the main script**:
     ```bash
     python main.py
     ```
-
 2. **Generate Visualizations**:
     - The visualization will be generated and saved in the `images/` directory.
 
 ## Visualization
-
 The sunburst chart visualizing the classification results can be found in the `images/` directory.
-
 ![image](https://github.com/user-attachments/assets/3ee38675-49fc-4939-9ad9-728fafa90852)
 
 ## Model Performance
