@@ -1,41 +1,24 @@
 import numpy as np
-import pandas as pd
-from model.base import BaseModel
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report, confusion_matrix
-from numpy import *
+from sklearn.multioutput import ClassifierChain
+from sklearn.model_selection import GridSearchCV
 import random
 
-num_folds = 0
 seed = 0
-# Data
-np.random.seed(seed)
 random.seed(seed)
-pd.set_option('display.max_rows', 500)
-pd.set_option('display.max_columns', 500)
-pd.set_option('display.width', 1000)
-pd.set_option('display.max_colwidth', 200)
+np.random.seed(seed)
 
-class RandomForest(BaseModel):
-    def __init__(self,
-                 model_name: str,
-                 embeddings: np.ndarray,
-                 y: np.ndarray) -> None:
-        super(RandomForest, self).__init__()
-        self.model_name = model_name
-        self.embeddings = embeddings
-        self.y = y
-        self.mdl = RandomForestClassifier(n_estimators=1000, random_state=seed, class_weight='balanced')
-        self.predictions = None
-        self.data_transform()
-
-    def train(self, data) -> None:
-        self.mdl = self.mdl.fit(data.X_train, data.y_train)
-
-    def predict(self, X_test: pd.Series):
-        predictions = self.mdl.predict(X_test)
-        self.predictions = predictions
-        return predictions
-
-    def print_results(self, data):
-        print(classification_report(data.y_test, self.predictions, zero_division=0))
+def perform_modelling_with_randomforest(X_train, Y_train):
+    base_model = RandomForestClassifier(random_state=42)
+    chain_model = ClassifierChain(base_model, order='random', random_state=42)
+    param_grid = {
+        'base_estimator__n_estimators': [50, 100, 200],
+        'base_estimator__max_depth': [None, 10, 20, 30],
+        'base_estimator__min_samples_split': [2, 5, 10],
+        'base_estimator__min_samples_leaf': [1, 2, 4],
+    }
+    grid_search = GridSearchCV(chain_model, param_grid, cv=3, verbose=2, n_jobs=-1)
+    grid_search.fit(X_train, Y_train)
+    best_model = grid_search.best_estimator_
+    best_model.fit(X_train, Y_train)
+    return best_model
