@@ -4,37 +4,6 @@
 
 This project focuses on the engineering and evaluation of an AI model that classifies various types of support tickets. The model utilizes text embeddings and classification algorithms to predict the type of issue described in a support ticket.
 
-## Project Structure
-Engineering-and-Evaluating_AI_CA/
-├── config/
-│ ├── Config.py
-├── features/
-│ ├── embeddings.py
-│ ├── input_data.py
-│ ├── preprocess.py
-├── model/
-│ ├── base.py
-│ ├── catboost.py
-│ ├── evaluate.py
-│ ├── gradient_boosting.py
-│ ├── randomforest.py
-│ ├── utils.py
-│ ├── init.py
-├── modelling/
-│ ├── data_model.py
-│ ├── modelling.py
-├── tests/
-│ ├── test.ipynb
-│ ├── test_base.py
-├── visualize/
-│ ├── visualization.py
-├── .gitignore
-├── LICENSE
-├── main.py
-├── requirements.txt
-├── true_and_predicted_results.csv
-
-
 
 ## Installation
 
@@ -130,6 +99,36 @@ Engineering-and-Evaluating_AI_CA/
 The sunburst chart visualizing the classification results can be found in the `images/` directory.
 
 ![Sunburst Chart](images/sunburst_chart.png)
+
+## Project Structure
+Engineering-and-Evaluating_AI_CA/
+├── config/
+│ ├── Config.py
+├── features/
+│ ├── embeddings.py
+│ ├── input_data.py
+│ ├── preprocess.py
+├── model/
+│ ├── base.py
+│ ├── catboost.py
+│ ├── evaluate.py
+│ ├── gradient_boosting.py
+│ ├── randomforest.py
+│ ├── utils.py
+│ ├── init.py
+├── modelling/
+│ ├── data_model.py
+│ ├── modelling.py
+├── tests/
+│ ├── test.ipynb
+│ ├── test_base.py
+├── visualize/
+│ ├── visualization.py
+├── .gitignore
+├── LICENSE
+├── main.py
+├── requirements.txt
+├── true_and_predicted_results.csv
 
 ## Contributing
 
