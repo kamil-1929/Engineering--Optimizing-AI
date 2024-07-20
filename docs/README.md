@@ -98,7 +98,7 @@ This project focuses on the engineering and evaluation of an AI model that class
 
 The sunburst chart visualizing the classification results can be found in the `images/` directory.
 
-![image](https://github.com/user-attachments/assets/cdfa7ff1-9114-4bb0-b28c-3bcfee4bfef0)
+![image](https://github.com/user-attachments/assets/3ee38675-49fc-4939-9ad9-728fafa90852)
 
 
 ## Project Structure
