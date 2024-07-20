@@ -1,102 +1,140 @@
-# Engineering-and-Evaluating_AI_CA
-=======
-
-# Chained Multi-outputs for Multi-label Classification
+# Engineering and Evaluating AI - CA Project
 
 ## Overview
 
-This project implements a chained multi-output approach for multi-label classification of emails. The dataset consists of various interaction types that need to be classified into multiple dependent variables (Type 2, Type 3, Type 4). This project aims to demonstrate the effectiveness of chained multi-output models in sequential classification tasks.
+This project focuses on the engineering and evaluation of an AI model that classifies various types of support tickets. The model utilizes text embeddings and classification algorithms to predict the type of issue described in a support ticket.
 
-## Directory Structure
+## Project Structure
+Engineering-and-Evaluating_AI_CA/
+├── config/
+│ ├── Config.py
+├── features/
+│ ├── embeddings.py
+│ ├── input_data.py
+│ ├── preprocess.py
+├── model/
+│ ├── base.py
+│ ├── catboost.py
+│ ├── evaluate.py
+│ ├── gradient_boosting.py
+│ ├── randomforest.py
+│ ├── utils.py
+│ ├── init.py
+├── modelling/
+│ ├── data_model.py
+│ ├── modelling.py
+├── tests/
+│ ├── test.ipynb
+│ ├── test_base.py
+├── visualize/
+│ ├── visualization.py
+├── .gitignore
+├── LICENSE
+├── main.py
+├── requirements.txt
+├── true_and_predicted_results.csv
 
-```
-CA_Code_with_Chained_Multi_Outputs/
-├── .idea/                          # IDE configuration files
-├── __pycache__/                    # Compiled bytecode files
-├── data/                           # Data files used for training and evaluation
-├── model/                          # Model definitions and implementations
-├── modelling/                      # Data modelling and processing scripts
-├── Config.py                       # Configuration file
-├── embeddings.py                   # Embedding generation script
-├── gradient_boosting.py            # Gradient boosting model script
-├── main.py                         # Main script for running the pipeline
-├── preprocess.py                   # Data preprocessing script
-└── README.md                       # Project documentation
-```
+
 
 ## Installation
 
 1. **Clone the repository**:
-    ```sh
-    git clone https://github.com/yourusername/CA_Code_with_Chained_Multi_Outputs.git
-    cd CA_Code_with_Chained_Multi_Outputs
+    ```bash
+    git clone https://github.com/x23233982/Engineering-and-Evaluating_AI_CA.git
+    cd Engineering-and-Evaluating_AI_CA
     ```
 
-2. **Install the required packages**:
-    ```sh
+2. **Create a virtual environment**:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+    ```
+
+3. **Install the required packages**:
+    ```bash
     pip install -r requirements.txt
     ```
-
-3. **Ensure the data files are in place**: 
-   Place the `AppGallery.csv` and `Purchasing.csv` files in the `data/` directory.
 
 ## Usage
 
 1. **Run the main script**:
-    ```sh
+    ```bash
     python main.py
     ```
 
-2. **Check the output**:
-   The script will output the classification results and accuracy metrics.
+2. **Generate Visualizations**:
+    - The visualization will be generated and saved in the `images/` directory.
 
-## Project Details
+## Model Performance
 
-### Chained Multi-outputs Approach
+### Overall Accuracy for Type 2: 73.81%
+**Classification Report for Type 2:**
 
-The chained multi-outputs approach involves sequential classification, where the prediction of one type influences the subsequent classifications.
+| Class             | Precision | Recall | F1-Score | Support |
+|-------------------|-----------|--------|----------|---------|
+| Others            | 0.60      | 0.43   | 0.50     | 7       |
+| Problem/Fault     | 0.64      | 0.64   | 0.64     | 11      |
+| Suggestion        | 0.81      | 0.88   | 0.84     | 24      |
+| **Accuracy**      |           |        | 0.74     | 42      |
+| **Macro Avg**     | 0.68      | 0.65   | 0.66     | 42      |
+| **Weighted Avg**  | 0.73      | 0.74   | 0.73     | 42      |
 
-1. **Stage 1**: A model (e.g., Random Forest) classifies Type 2.
-2. **Stage 2**: The same model classifies combined Type 2 and Type 3.
-3. **Stage 3**: The model classifies combined Type 2, Type 3, and Type 4.
+### Overall Accuracy for Type 3: 69.05%
+**Classification Report for Type 3:**
 
-### Data Elements
+| Class                              | Precision | Recall | F1-Score | Support |
+|------------------------------------|-----------|--------|----------|---------|
+| AppGallery-Install/Upgrade         | 1.00      | 0.50   | 0.67     | 2       |
+| AppGallery-Use                     | 1.00      | 0.33   | 0.50     | 3       |
+| Coupon/Gifts/Points Issues         | 0.43      | 0.75   | 0.55     | 4       |
+| General                            | 1.00      | 1.00   | 1.00     | 2       |
+| Invoice                            | 1.00      | 0.50   | 0.67     | 2       |
+| Missing                            | 0.57      | 0.57   | 0.57     | 7       |
+| Payment                            | 0.75      | 0.88   | 0.81     | 17      |
+| Payment issue                      | 0.00      | 0.00   | 0.00     | 0       |
+| Third Party APPs                   | 0.00      | 0.00   | 0.00     | 2       |
+| VIP / Offers / Promotions          | 1.00      | 0.67   | 0.80     | 3       |
+| **Accuracy**                       |           |        | 0.69     | 42      |
+| **Macro Avg**                      | 0.68      | 0.52   | 0.56     | 42      |
+| **Weighted Avg**                   | 0.73      | 0.69   | 0.68     | 42      |
 
-- **Input Data**: 
-  - `AppGallery.csv`
-  - `Purchasing.csv`
-- **Types and Classes**:
-  - **Type 2**: Suggestion, Problem/Fault, Others
-  - **Type 3**: Various payment and usage-related issues
-  - **Type 4**: Various app-related issues and requests
+### Overall Accuracy for Type 4: 61.90%
+**Classification Report for Type 4:**
 
-### Preprocessing
+| Class                              | Precision | Recall | F1-Score | Support |
+|------------------------------------|-----------|--------|----------|---------|
+| Can't install Apps                 | 1.00      | 0.50   | 0.67     | 2       |
+| Can't use or acquire               | 0.75      | 1.00   | 0.86     | 3       |
+| Cooperated campaign issue          | 0.00      | 0.00   | 0.00     | 1       |
+| Invoice related request            | 1.00      | 0.50   | 0.67     | 2       |
+| Missing                            | 0.45      | 0.71   | 0.56     | 7       |
+| Offers / Vouchers / Promotions     | 1.00      | 0.67   | 0.80     | 3       |
+| Others                             | 0.00      | 0.00   | 0.00     | 1       |
+| Personal data                      | 1.00      | 1.00   | 1.00     | 1       |
+| Query deduction details            | 0.00      | 0.00   | 0.00     | 2       |
+| Refund                             | 0.00      | 0.00   | 0.00     | 2       |
+| Security issue / malware           | 0.00      | 0.00   | 0.00     | 1       |
+| Subscription cancellation          | 0.65      | 0.87   | 0.74     | 15      |
+| UI Abnormal in Huawei AppGallery   | 0.00      | 0.00   | 0.00     | 2       |
+| **Accuracy**                       |           |        | 0.62     | 42      |
+| **Macro Avg**                      | 0.45      | 0.40   | 0.41     | 42      |
+| **Weighted Avg**                   | 0.55      | 0.62   | 0.56     | 42      |
 
-Data preprocessing includes de-duplication and noise removal to ensure clean and consistent input data.
+### Group Accuracies
+- **Average Accuracy for AppGallery & Games group**: 40.00%
+- **Average Accuracy for In-App Purchase group**: 86.27%
+- **Overall Average Accuracy for all groups**: 65.08%
 
-### Model Training and Evaluation
+## Visualization
 
-The models are trained in a chained sequence, with each subsequent model using the predictions from the previous stage.
+The sunburst chart visualizing the classification results can be found in the `images/` directory.
 
-## Results
-
-### AppGallery & Games
-
-- **Accuracy for Type 2**: 0.76
-- **Accuracy for Type 3**: 1.0
-- **Accuracy for Type 4**: 1.0
-
-### In-App Purchase
-
-- **Accuracy for Type 2**: 0.82
-- **Accuracy for Type 3**: 1.0
-- **Accuracy for Type 4**: 1.0
+![Sunburst Chart](images/sunburst_chart.png)
 
 ## Contributing
 
-Contributions are welcome! Please fork the repository and submit pull requests for review.
+Feel free to fork this project and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
-This project is licensed under the MIT License.
-
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
