@@ -34,6 +34,12 @@ This project focuses on the engineering and evaluation of an AI model that class
 2. **Generate Visualizations**:
     - The visualization will be generated and saved in the `images/` directory.
 
+## Visualization
+
+The sunburst chart visualizing the classification results can be found in the `images/` directory.
+
+![image](https://github.com/user-attachments/assets/3ee38675-49fc-4939-9ad9-728fafa90852)
+
 ## Model Performance
 
 ### Overall Accuracy for Type 2: 73.81%
@@ -93,13 +99,6 @@ This project focuses on the engineering and evaluation of an AI model that class
 - **Average Accuracy for AppGallery & Games group**: 40.00%
 - **Average Accuracy for In-App Purchase group**: 86.27%
 - **Overall Average Accuracy for all groups**: 65.08%
-
-## Visualization
-
-The sunburst chart visualizing the classification results can be found in the `images/` directory.
-
-![image](https://github.com/user-attachments/assets/3ee38675-49fc-4939-9ad9-728fafa90852)
-
 
 ## Project Structure
 Engineering-and-Evaluating_AI_CA/
