@@ -63,7 +63,7 @@ def verify_predictions(model, X_test, Y_test, le_y2, le_y3, le_y4):
     results_df.to_csv('true_and_predicted_results.csv', index=False)
 
     overall_accuracy = np.mean([accuracy_Y2, accuracy_Y3, accuracy_Y4])
-    print(f"Overall Model Accuracy: {overall_accuracy * 100:.2f}%")
+    #print(f"Overall Model Accuracy: {overall_accuracy * 100:.2f}%")
 
     return results_df
 
