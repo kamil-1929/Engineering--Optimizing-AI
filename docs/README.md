@@ -1,29 +1,23 @@
 # Engineering and Evaluating AI - CA Project
 
 ## Overview
-
 This project focuses on the engineering and evaluation of an AI model that classifies various types of support tickets. The model utilizes text embeddings and classification algorithms to predict the type of issue described in a support ticket.
 
-
 ## Installation
-
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/x23233982/Engineering-and-Evaluating_AI_CA.git
+    git clone https://github.com/<username>/Engineering-and-Evaluating_AI_CA.git
     cd Engineering-and-Evaluating_AI_CA
     ```
-
 2. **Create a virtual environment**:
     ```bash
     python -m venv venv
     source venv/bin/activate  # On Windows use `venv\Scripts\activate`
     ```
-
 3. **Install the required packages**:
     ```bash
     pip install -r requirements.txt
     ```
-
 ## Usage
 
 1. **Run the main script**:
