@@ -4,4 +4,3 @@ scikit-learn
 catboost
 plotly
 pytest
-randomforest

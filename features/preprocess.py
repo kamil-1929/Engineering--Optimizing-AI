@@ -4,6 +4,10 @@ from config.Config import *
 
 
 def de_duplication(data: pd.DataFrame):
+    """
+
+    @rtype: object
+    """
     data["ic_deduplicated"] = ""
 
     cu_template = {

@@ -1,5 +1,7 @@
 import plotly.express as px
 import pandas as pd
+import os
+from pathlib import Path
 
 def generate_sunburst_chart(csv_file_path, output_image_path):
     # Load the true and predicted results data
@@ -42,7 +44,7 @@ def generate_sunburst_chart(csv_file_path, output_image_path):
                       title="Issues Visualization")
 
     # Save the plot as a file
-    fig.write_image(output_image_path)
+    fig.write_image(str(output_image_path))
 
     # Show the plot
     fig.show()
