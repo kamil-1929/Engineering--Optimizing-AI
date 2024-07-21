@@ -86,9 +86,9 @@ The sunburst chart visualizing the classification results can be found in the `i
 | **Weighted Avg**                   | 0.55      | 0.62   | 0.56     | 42      |
 
 ### Group Accuracies
-- **Average Accuracy for AppGallery & Games group**: 40.00%
-- **Average Accuracy for In-App Purchase group**: 86.27%
-- **Overall Average Accuracy for all groups**: 65.08%
+- **Average Accuracy for AppGallery & Games group**: 54.00%
+- **Average Accuracy for In-App Purchase group**: 80.27%
+- **Overall Average Accuracy for all groups**: 65.87%
 
 ## Project Structure
 Engineering-and-Evaluating_AI_CA/
