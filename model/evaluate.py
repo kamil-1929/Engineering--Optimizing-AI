@@ -2,7 +2,7 @@ from sklearn.metrics import classification_report, accuracy_score
 import pandas as pd
 import numpy as np
 
-def verify_predictions(model, X_test, Y_test, le_y2, le_y3, le_y4):
+def verify_predictions(model, X_test, Y_test, le_y2, le_y3, le_y4, df, train_idx, test_idx):
     Y_pred = model.predict(X_test)
     Y_pred = Y_pred.astype(int)
     Y_test = Y_test.astype(int)
@@ -17,6 +17,7 @@ def verify_predictions(model, X_test, Y_test, le_y2, le_y3, le_y4):
     Y4_pred_str = le_y4.inverse_transform(Y_pred[:, 2]).astype(str)
 
     results_df = pd.DataFrame({
+        'Y1': df.loc[test_idx, 'y1'],
         'Y2_test': Y2_test_str,
         'Y3_test': Y3_test_str,
         'Y4_test': Y4_test_str,
@@ -45,12 +46,9 @@ def verify_predictions(model, X_test, Y_test, le_y2, le_y3, le_y4):
     print(f"Overall Accuracy for Type 4: {accuracy_Y4:.2%}")
     print("Classification Report for Type 4:")
     print(report_Y4)
-
-    appgallery_games_group = ['AppGallery-Install/Upgrade', 'AppGallery-Use', 'Games']
-    in_app_purchase_group = ['Payment', 'Payment issue', 'In-App Purchase']
     
-    appgallery_games_accuracy = calculate_group_accuracy(results_df, 'Y3_test', appgallery_games_group)
-    in_app_purchase_accuracy = calculate_group_accuracy(results_df, 'Y3_test', in_app_purchase_group)
+    appgallery_games_accuracy = calculate_group_accuracy(results_df, 'Y1', 'AppGallery &amp; Games ')
+    in_app_purchase_accuracy = calculate_group_accuracy(results_df, 'Y1', 'In-App Purchase ')
     overall_average_accuracy = results_df['row_accuracies'].mean()
     
     print(f"Average Accuracy for AppGallery & Games group: {appgallery_games_accuracy:.2f}%")
@@ -63,7 +61,6 @@ def verify_predictions(model, X_test, Y_test, le_y2, le_y3, le_y4):
     results_df.to_csv('true_and_predicted_results.csv', index=False)
 
     overall_accuracy = np.mean([accuracy_Y2, accuracy_Y3, accuracy_Y4])
-    print(f"Overall Model Accuracy: {overall_accuracy * 100:.2f}%")
 
     return results_df
 
@@ -79,8 +76,5 @@ def calculate_row_accuracy(y_true, y_pred):
         return 0.0
 
 def calculate_group_accuracy(results_df, column, group):
-    group_df = results_df[results_df[column].isin(group)]
-    if len(group_df) > 0:
-        return group_df['row_accuracies'].mean()
-    else:
-        return 0.0
+    group_df = results_df[results_df['Y1'] == group]
+    return group_df['row_accuracies'].mean()
