@@ -97,25 +97,25 @@ Engineering-and-Evaluating_AI_CA/
 -  features/preprocess.py
 -  model/
 - model/ base.py
-│ ├── catboost.py
-│ ├── evaluate.py
-│ ├── gradient_boosting.py
-│ ├── randomforest.py
-│ ├── utils.py
-│ ├── init.py
-├── modelling/
-│ ├── data_model.py
-│ ├── modelling.py
-├── tests/
-│ ├── test.ipynb
-│ ├── test_base.py
-├── visualize/
-│ ├── visualization.py
-├── .gitignore
-├── LICENSE
-├── main.py
-├── requirements.txt
-├── true_and_predicted_results.csv
+─ model/ catboost.py
+─ model/ evaluate.py
+─ model/ gradient_boosting.py
+─ model/ randomforest.py
+─ model/ utils.py
+─ model/ init.py
+- modelling/
+- modelling/ data_model.py
+- modelling/ modelling.py
+- tests/
+- tests/ test.ipynb
+- tests/ test_base.py
+- visualize/
+- visualize/ visualization.py
+- gitignore
+-  LICENSE
+-  main.py
+-  requirements.txt
+-  true_and_predicted_results.csv
 
 ## Contributing
 
