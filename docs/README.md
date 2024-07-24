@@ -92,14 +92,11 @@ The sunburst chart visualizing the classification results can be found in the `i
 
 ## Project Structure
 Engineering-and-Evaluating_AI_CA/
-├── config/
-│ ├── Config.py
-├── features/
-│ ├── embeddings.py
-│ ├── input_data.py
-│ ├── preprocess.py
-├── model/
-│ ├── base.py
+-  config/Config.py
+-  features/ embeddings.py
+-  features/preprocess.py
+-  model/
+- model/ base.py
 │ ├── catboost.py
 │ ├── evaluate.py
 │ ├── gradient_boosting.py
