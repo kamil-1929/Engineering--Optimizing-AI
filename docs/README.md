@@ -1,4 +1,6 @@
-# Engineering and Evaluating AI - CA Project
+## This project was developed as part of my master's degree coursework. It serves as a practical implementation of concepts covered in my study module.
+
+# Engineering and Evaluating AI 
 
 ## Overview
 This project focuses on the engineering and evaluation of an AI model that classifies various types of support tickets. The model utilizes text embeddings and classification algorithms to predict the type of issue described in a support ticket.
